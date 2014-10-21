@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 
 
-group :development :test do
+group :development, :test do
 	gem 'sqlite3'
 end
 
