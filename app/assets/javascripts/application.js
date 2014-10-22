@@ -20,31 +20,53 @@
 //alert('meow'); pops up meow
 
 //sanity check that js is working
-alert('js is added to application!');
+//alert('js is added to application!');
 //
 var slides, slides_total, slide_current;
+
 // means to execute the code only once the document has finished loading
-document.addEventListener('DOMContentLoaded', function(){
-	// get the pictures!
+document.addEventListener('DOMContentLoaded', function(){	// get the pictures!
+
 	slides = document.getElementsByClassName("col-sm-12");
-	// how many pictures are there?
-	slides_total = slides.length;
-	// let's start with the first picture
+	slides_total = slides.length;	// let's start with the first picture
 	slide_current = 0;
-	// function to set time interval (this will loop)
+	changePicture(slide_current);
+
+	document.getElementsByClassName('prev')[0].addEventListener('click', function () {
+      if(slide_current > 0){
+        slide_current--;
+      }else{
+        slide_current = (slides_total - 1);
+      }
+      	console.log(slide_current);
+      changePicture(slide_current);
+    });
+
+ document.getElementsByClassName('next')[0].addEventListener('click', function () {
+      if(slide_current < (slides_total -1)){
+        slide_current++;
+      }else{
+        slide_current = 0;
+      }
+
+      changePicture(slide_current);
+    });
+
+  document.getElementsByClassName('reset')[0].addEventListener('click', function () {
+      slide_current = 0;
+        
+      changePicture(slide_current);
+    });
+
+
 	window.setInterval(function(){	
-		// change the picture to the current time
 		changePicture(slide_current);
-		//if we get to the last slide, go back to the first one
-		if(slide_current >= (slides_total-1)){
+			if(slide_current >= (slides_total-1)){
 			slide_current = 0;
-		// otherwise, just go to the next slide
-		}else{
+			}else{
 			slide_current++; //this is an abbreviation for slide_current = slide_current + 1
-		}
-		//log the slide to the console so for confirmation
+			}
 		console.log(slide_current);
-		//do this every 3s
 		}, 3000);
 });
 // helper functino takes a slide as input
@@ -58,3 +80,7 @@ function changePicture(slide){
 	slides[slide].style.display = 'block';
 
 };
+
+// First we get the element with class .prev, we want to add an event listener
+    // to that element so we can perform a function every time teh element is clicked
+    
