@@ -50,7 +50,11 @@ document.addEventListener('DOMContentLoaded', function(){	// get the pictures!
       }
 
       changePicture(slide_current);
+      ga("send","event", "slider","click next", "click the next button", 1);
+
+      mixpanel.track("click next");
     });
+
 
   document.getElementsByClassName('reset')[0].addEventListener('click', function () {
       slide_current = 0;
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function(){	// get the pictures!
 
 
 	window.setInterval(function(){	
-		changePicture(slide_current);
+		//changePicture(slide_current);
 			if(slide_current >= (slides_total-1)){
 			slide_current = 0;
 			}else{
