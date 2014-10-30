@@ -17,14 +17,15 @@
           <%= link_to pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
           Delete
-          <% end %>
-          
-        
+          <% end %>        
         </div>
       <% end %>
+
      </div>
     </div>
   <% end %>
 </div>
 
-
+<div class= "center">
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
